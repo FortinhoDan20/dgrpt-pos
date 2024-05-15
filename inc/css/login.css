@@ -1,0 +1,36 @@
+/* *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ */
+
+/* body{
+    background: linear-gradient(90deg, rgb(119, 30, 30) 0%, rgb(76, 80, 20) 35%, rgb(18, 19, 112) 100%);
+    font-family: 'Poppins', sans-serif;
+} */
+
+/* .container{
+    margin-top: 250px;
+} */
+/* form{
+    width: 24%;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 20px;
+    margin-top: 250px;
+}
+
+.btn-primary {
+width: 100%;
+border: none;
+border-radius: 100px;
+background: linear-gradient(90deg, rgb(15, 15, 15) 0%, rgb(13, 6, 77) 35%, rgb(116, 118, 250) 100%);
+}
+
+.form-control{
+    color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);  
+    box-shadow: none !important;
+    border: none;
+} */
