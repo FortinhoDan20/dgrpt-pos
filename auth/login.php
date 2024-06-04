@@ -16,7 +16,7 @@ if($flash){
         <div class="col-md-4 mb-3">
         <div class="card mt-4 shadow-lg p-3 mb-5 bg-body rounded">
                   <div class="card-header">
-                      <h6 class="mb-0 text-center p-3">DGRPT | AUTHENTIFICATION
+                      <h6 class="mb-0 text-center p-3">DGRPT | ONYX COLLECTOR TAX </h6>
                   </div>
                   <div class="card-body">
                       <form action="app/login/logged.php" method="POST">

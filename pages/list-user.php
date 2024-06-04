@@ -2,7 +2,7 @@
       require_once('../database/dbConnect.php');
 
 
-$req = "SELECT * FROM user_T LEFT JOIN site ON site.id = user_T.site_id";
+$req = "SELECT * FROM user_T LEFT JOIN role_user ON role_user.id_role = user_T.roleUser";
 
 $result = $bdd->query($req);
 ?>
@@ -23,7 +23,6 @@ $result = $bdd->query($req);
                                     <th>PRENOM</th>
                                     <th>NOM COMPLET</th>
                                     <th>Sexe</th>
-                                    <th>Site d'affectection</th>
                                     <th>Rôle</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -43,10 +42,9 @@ $result = $bdd->query($req);
                                     <td><?=strtoupper($row['lastname']) ;?></td>
                                     <td><?=strtoupper($row['sexe']) ;?></td>
                                     <td><?=strtoupper($row['name']) ;?></td>
-                                    <td><?=strtoupper($row['roleUser']) ;?></td>
                                     <td>
                                         <?php 
-                                            if($row['status'] === "En activité") {
+                                            if($row['status'] === "actif") {
 
                                         ?>  
                                         <span class="p-2 mb-2 bg-success text-white ">
@@ -69,7 +67,7 @@ $result = $bdd->query($req);
                                     </a> &nbsp;
 
                                     <?php 
-                                            if($row['status'] == "En activité") {
+                                            if($row['status'] == "actif") {
 
                                         ?>  
                                         <a onclick="return confirm('ETES-VOUS SÛR DE VOULOIR FERMER LE SITE DE <?= $row['name'];?> ?')"

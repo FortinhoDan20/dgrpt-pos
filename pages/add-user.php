@@ -2,7 +2,7 @@
       require_once('../database/dbConnect.php');
 
 
-$req = "SELECT * FROM site";
+$req = "SELECT * FROM role_user";
 
 $result = $bdd->query($req);
 ?>
@@ -31,10 +31,6 @@ $result = $bdd->query($req);
                                     <input type="text" name="lastname" required class="form-control" />
                                 </div>
 
-                                <div class="col-md-12 mb-3">
-                                    <label for="">Phone </label>
-                                    <input type="number" name="phone" class="form-control" />
-                                </div>
 
                                 <div class="col-md-12 mb-3 mt-3">
                                     <select name="sex" class="form-control">
@@ -44,13 +40,13 @@ $result = $bdd->query($req);
                                     </select>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="">Site d'Affectation <span class="text-danger">*</span></label>
-                                    <select name="site" class="form-control">
-                                        <option selected >Choosissez le site d'affectation</option>
+                                    <label for="">Rôle Utilisateur <span class="text-danger">*</span></label>
+                                    <select name="role" class="form-control">
+                                        <option selected >Rôle Utilisateur</option>
                                         <?php 
 
                                             foreach ($result as $row) {?>
-                                            <option value="<?=$row['id'];?>"><?=$row['name'];?></option>
+                                            <option value="<?=$row['id_role'];?>"><?=$row['name'];?></option>
 
                                             <?php
                                             }
@@ -58,26 +54,17 @@ $result = $bdd->query($req);
                                     </select>
                                 </div>
 
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-6 mb-3">
                                     <label for="">Identifiant <span class="text-danger">*</span></label>
                                     <input type="text" name="username" required class="form-control" />
                                 </div>
 
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-6 mb-3">
                                     <label for="">Password <span class="text-danger">*</span></label>
                                     <input type="password" name="mdps" required class="form-control" />
                                 </div>
 
-                                <div class="col-md-4 mb-3">
-                                    <label for="">Rôle Utilisateur <span class="text-danger">*</span></label>
-
-                                    <select name="role" class="form-control">
-                                        <option selected value="">Choosissez le rôle</option>
-                                        <option value="admin">Administrateur</option>
-                                        <option value="receveur">Receveur</option>
-                                        <option value="agent">Agent</option>
-                                    </select>
-                                </div>
+                               
 
                                 <div class="col-md-12 mb-3">
                                 <button type="submit" name="create"class="btn btn-warning "> <i class="fa fa-save text-primary" aria-hidden="true"></i> ENREGISTRER UTILISATEUR</button>

@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['id'])) {
 
-   $role = $_SESSION['roleUser'];
+   $role = $_SESSION['role'];
   
 
 }
@@ -17,7 +17,7 @@ if (isset($_SESSION['id'])) {
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">DGRPT</div>
                             <?php
-                            if($role === "admin") {
+                            if($role === "admin" || $role === "gest" ) {
                                 ?>
 
                             <a class="nav-link" href="../pages/index.php?p=home">
@@ -31,7 +31,7 @@ if (isset($_SESSION['id'])) {
                             
                             <?php
 
-                            if($role === "admin"){
+                            if($role === "admin" || $role === "gest" ){
 
                             ?>
 
@@ -43,20 +43,36 @@ if (isset($_SESSION['id'])) {
                             </a>
                             <div class="collapse" id="collapseSite" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
+                                <?php 
+                                if($role === "gest"){
+
+                                ?>
                                     <a class="nav-link" href="../pages/index.php?p=add-site">Nouveau site</a>
+                                <?php
+
+                                }
+                                ?>
                                     <a class="nav-link" href="../pages/index.php?p=list-site">Liste de site</a>
                                 </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">Gestion d'assujesttissement</div>
+                            <div class="sb-sidenav-menu-heading">Gestion des Postes</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAss" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                                Assujettis
+                                Nos Postes
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseAss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="../pages/index.php?p=add-assujetti">Nouvel assujetti</a>
-                                    <a class="nav-link" href="../pages/index.php?p=list-assujetti">Liste des assujettis</a>
+                                <?php 
+                                if($role === "gest"){
+
+                                ?>
+                                    <a class="nav-link" href="../pages/index.php?p=add-post">Nouveau Post</a>
+                                <?php
+
+                                }
+                                ?>                                    
+                                <a class="nav-link" href="../pages/index.php?p=list-posts">Liste des postes</a>
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">Gestion de recettes</div>
@@ -70,7 +86,11 @@ if (isset($_SESSION['id'])) {
                                     <a class="nav-link" href="../pages/index.php?p=list-recettes">Recettes</a>
                                 </nav>
                             </div>
+                            
+                            <?php 
+                                if($role === "admin"){
 
+                            ?>
                             <div class="sb-sidenav-menu-heading">Gestion Utilisateur</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUser" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
@@ -83,32 +103,18 @@ if (isset($_SESSION['id'])) {
                                     <a class="nav-link" href="../pages/index.php?p=list-user">Liste utilisateurs</a>
                                 </nav>
                             </div>
-
-
-                            <?php
-
-                            }else if($role === "admin" && $role === "receveur"){
-
-                            ?>
-
-                            <div class="sb-sidenav-menu-heading">Gestion de recettes</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRec" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                                Recettes 
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseRec" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="../pages/index.php?p=add-assujetti">Par site</a>
-                                    <a class="nav-link" href="../pages/index.php?p=list-assujetti">Par Année</a>
-                                    <a class="nav-link" href="../pages/index.php?p=list-assujetti">A une date donnée</a>
-                                </nav>
-                            </div>
-
-                            <?php
-
-                            }else{
                             
+                            <?php
+
+                                }
+                            
+                            ?>
+ 
+
+
+                            <?php
+
+                            }else{                            
                             
                             ?>
 

@@ -2,7 +2,7 @@
       require_once('../database/dbConnect.php');
 
 
-$req = "SELECT * FROM site";
+$req = "SELECT * FROM site LEFT JOIN user_T ON user_T.id_user = site.headOfCollector";
 
 $result = $bdd->query($req);
 ?>
@@ -20,7 +20,8 @@ $result = $bdd->query($req);
                                 <tr>
                                     <th>N°</th>
                                     <th>NOM SITE</th>
-                                    <th>NOMBRE DE TICKET PAR SITE</th>
+                                    <th>TICKET PAR SITE</th>
+                                    <th>RECEVEUR</th>
                                     <th>STATUS</th>
                                     <th>Action</th>
                                 </tr>
@@ -37,19 +38,20 @@ $result = $bdd->query($req);
                                     <td><?=$i;?></td>
                                     <td><?=strtoupper($row['name']) ;?></td>
                                     <td><?=$row['ticket'];?></td>
+                                    <td><?=$row['firstname'];?> <?=$row['lastname'];?></td>
                                     <td>
                                         <?php 
-                                            if($row['status'] == "En activité") {
+                                            if($row['statusST'] == "En activité") {
 
                                         ?>  
                                         <span class="p-2 mb-2 bg-success text-white ">
-                                            <?=$row['status'];?>
+                                            <?=$row['statusST'];?>
                                         </span> 
                                         <?php 
                                         }else{
                                             ?> 
                                         <span class="p-2 mb-2 bg-danger text-white ">
-                                            <?=$row['status'];?>
+                                            <?=$row['statusST'];?>
                                         </span> 
                                         <?php 
                                         }
@@ -58,11 +60,11 @@ $result = $bdd->query($req);
                                     
                                     <td class="text-center">
 
-                                    <a class="btn btn-sm btn-outline-primary" href="dashboard.php?p=edituser&id=<?php echo $row['iduser']?>"><span class="fas fa-eye"></span> 
+                                    <a class="btn btn-sm btn-outline-primary" href="../pages/index.php?p=view-site&id=<?php echo $row['id_site']?>"><span class="fas fa-eye"></span> 
                                     </a> &nbsp;
 
                                     <?php 
-                                            if($row['status'] == "En activité") {
+                                            if($row['statusST'] == "En activité") {
 
                                         ?>  
                                         <a onclick="return confirm('ETES-VOUS SÛR DE VOULOIR FERMER LE SITE DE <?= $row['name'];?> ?')"

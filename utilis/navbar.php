@@ -12,7 +12,7 @@ if (isset($_SESSION['id'])) {
 
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-warning shadow-lg p-3 mb-5 y rounded"">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3 text-dark" href="index.html">SHARK APP </a>
+            <a class="navbar-brand ps-3 text-dark" href="index.html">TAX COLLECTOR  </a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 text-dark" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->

@@ -10,9 +10,9 @@
 
             $passWord = sha1($mdps);
 
-            $req ="INSERT INTO user_T (firstname, lastname, phone, sexe, site_id, username, roleUser, mdps, status)value(?,?,?,?,?,?,?,?,?)";
+            $req ="INSERT INTO user_T (firstname, lastname, sexe, roleUser, username,  mdps, status)value(?,?,?,?,?,?,?)";
 
-            $params = array($firstname, $lastname, $phone, $sex, $site, $username, $role, $passWord, $status);
+            $params = array($firstname, $lastname, $sex, $role, $username, $passWord, $status);
 
             $result = $bdd->prepare($req);
 

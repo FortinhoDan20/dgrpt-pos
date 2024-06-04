@@ -1,76 +1,77 @@
-CREATE TABLE site (
-id INT AUTO_INCREMENT,
-name VARCHAR(50) UPPER(),
-ticket int,
-status VARCHAR(30),
-createdAt TIMESTAMP DEFAULT NOW(),
-updatedAt TIMESTAMP DEFAULT NOW()
+CREATE TABLE role_user (
+id_role INT AUTO_INCREMENT,
+name VARCHAR(50),
+slug VARCHAR(50),
 
-PRIMARY KEY (id),
+PRIMARY KEY (id_role)
 
 );
 
-CREATE TABLE user (
-id INT AUTO_INCREMENT,
+CREATE TABLE user_T (
+id_user INT AUTO_INCREMENT,
 firstname VARCHAR(50),
 lastname VARCHAR(50),
 sexe VARCHAR(2),
-idSite INT,
-roleUser VARCHAR(50),
+roleUser INT,
 mdps TEXT,
 status VARCHAR(30),
-createdAt TIMESTAMP DEFAULT NOW(),
-updatedAt TIMESTAMP DEFAULT NOW()
-PRIMARY KEY (id),
-FOREIGN KEY (idSite) REFERENCES site (id)
+createdAt date NOT NULL DEFAULT current_timestamp(),
+updatedAt date NOT NULL DEFAULT current_timestamp(),
+PRIMARY KEY (id_user),
+FOREIGN KEY (roleUser) REFERENCES role_user (id_role)
 );
 
+CREATE TABLE site (
+id_site INT AUTO_INCREMENT,
+name VARCHAR(50),
+ticket int,
+headOfCollector INT,
+status VARCHAR(30),
+createdAt date NOT NULL DEFAULT current_timestamp(),
+updatedAt TIMESTAMP DEFAULT NOW(),
+PRIMARY KEY (id_site),
+FOREIGN KEY (headOfCollector) REFERENCES user_T (id_user)
 
-CREATE TABLE assujetti (
-num_quitt INT AUTO_INCREMENT,
+);
+
+CREATE TABLE post (
+id_post INT AUTO_INCREMENT,
+name VARCHAR(50),
+site INT,
+headOfPost INT,
+orderer INT,
+taxCollector INT,
+status VARCHAR(30),
+createdAt date NOT NULL DEFAULT current_timestamp(),
+updatedAt TIMESTAMP DEFAULT NOW(),
+PRIMARY KEY (id_post),
+FOREIGN KEY (site) REFERENCES site (id_site),
+FOREIGN KEY (headOfPost) REFERENCES user_T (id_user),
+FOREIGN KEY (orderer) REFERENCES user_T (id_user),
+FOREIGN KEY (taxCollector) REFERENCES user_T (id_user)
+
+);
+
+CREATE TABLE assujettissement (
+id INT AUTO_INCREMENT,
+num_quitt INT ,
 assujett VARCHAR(50),
-generatingAct TEXT
+generatingAct TEXT,
 numberAct VARCHAR(50),
+amountInLetter TEXT,
+treasure INT,
+partner INT,
 amount INT,
-amountInLetter TEXT
-idAgent INT,
-site_id: INT,
-month: VARCHAR(30),
-year: INT,
+taxCollector INT,
+post INT,
+site INT,
+month VARCHAR(30),
+year INT,
 statusQT VARCHAR(30),
 createdAt TIMESTAMP DEFAULT NOW(),
-updatedAt TIMESTAMP DEFAULT NOW()
+updatedAt TIMESTAMP DEFAULT NOW(),
 PRIMARY KEY (id),
-FOREIGN KEY (idAgent) REFERENCES user (id)
-FOREIGN KEY (site_id) REFERENCES site (id)
+FOREIGN KEY (taxCollector) REFERENCES user_T (id_user),
+FOREIGN KEY (post) REFERENCES post (id_post),
+FOREIGN KEY (site) REFERENCES site (id_site)
 );
-
-CREATE TABLE log (
-id INT AUTO_INCREMENT,
-user_id INT,
-logMessage VARCHAR(50),
-status VARCHAR(30),
-createdAt TIMESTAMP DEFAULT NOW()
-PRIMARY KEY (id),
-FOREIGN KEY (user_id) REFERENCES site (id)
-);
-
-CREATE TABLE logSite (
-id INT AUTO_INCREMENT,
-site_id INT,
-user_id INT,
-logMessage VARCHAR(50),
-ticket int,
-status VARCHAR(30),
-createdAt TIMESTAMP DEFAULT NOW(),
-PRIMARY KEY (id),
-FOREIGN KEY (idSite) REFERENCES site (id)
-FOREIGN KEY (user_id) REFERENCES user (id)
-);
-
-
-
-
-
-
-                                         
